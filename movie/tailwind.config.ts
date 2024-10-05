@@ -12,6 +12,10 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        ten: ["Ten Mincho", "serif"],
+        cabin: ["Cabin", "sans-serif"],
+      },
     },
   },
   plugins: [],

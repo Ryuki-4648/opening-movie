@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.l- {
+  &main {
+    scroll-snap-type: y mandatory;
+  }
+  &section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+.c- {
+  &video {
+    &01 {
+      width: 1400px;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+}
