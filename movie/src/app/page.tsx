@@ -1,15 +1,12 @@
 "use client";
 
-import { Autoplay, EffectFade } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-// import styles from "./index.module.css";
 
 import history01 from "../../public/data/prod/history01.json";
 import history02 from "../../public/data/prod/history02.json";
-import Image from "next/image";
+import SwiperGallery from "./components/SwiperGallery";
 
 export default function Home() {
 
@@ -50,29 +47,7 @@ export default function Home() {
           <div className="">
             <h2 className="text-[180px] font-bold font-ten absolute top-0 left-0 leading-[0.6em]">GROOM</h2>
             <div className="w-[500px] absolute right-0 top-0 h-full">
-              <Swiper
-                className="flex justify-end"
-                modules={[Autoplay, EffectFade]}
-                slidesPerView={1}
-                loop={true}
-                speed={100}
-                autoplay={{
-                  delay: 500,
-                  disableOnInteraction: false,
-                }}
-                // className={styles.slideWrapper}
-              >
-                {history01.map(({ id, image }) => (
-                  <SwiperSlide key={id}>
-                    <Image
-                      src={image}
-                      width={500}
-                      height={800}
-                      alt="Slider Image"
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+              <SwiperGallery targetData={history01} />
             </div>
           </div>
         </section>
@@ -81,28 +56,7 @@ export default function Home() {
           <div className="">
             <h2 className="text-[180px] font-bold font-ten absolute top-0 left-0 leading-[0.6em]">BRIDE</h2>
             <div className="w-[500px] absolute right-0 top-0 h-full">
-              <Swiper
-                  modules={[Autoplay]}
-                  slidesPerView={1}
-                  loop={true}
-                  speed={100} // スライドが切り替わる時の速度
-                  autoplay={{
-                    delay: 500,
-                    disableOnInteraction: false,
-                  }}
-                  // className={styles.slideWrapper}
-                >
-                  {history02.map(({ id, image }) => (
-                    <SwiperSlide key={id}>
-                      <Image
-                        src={image}
-                        width={500}
-                        height={300}
-                        alt="Slider Image"
-                      />
-                    </SwiperSlide>
-                  ))}
-              </Swiper>
+              <SwiperGallery targetData={history02} />
             </div>
           </div>
         </section>
