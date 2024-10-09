@@ -6,11 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from 'next/image';
-
-interface TargetData {
-  id: number;
-  image: string;
-}
+import { TargetData } from "../types/targetData";
 
 interface SwiperGalleryProps {
   targetData: TargetData[];
