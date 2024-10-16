@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import history01 from "../../public/data/prod/history01.json";
 import history02 from "../../public/data/prod/history02.json";
 import SwiperGallery from "./components/SwiperGallery";
+import ErrorModal from "./components/ErrorModal";
 
 export default function Home() {
 
@@ -49,6 +50,11 @@ export default function Home() {
             <div className="w-[500px] absolute right-0 top-0 h-full">
               <SwiperGallery targetData={history01} />
             </div>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 font-ten text-[38px]">
+              <p>xxxx年xx月xx日生まれ</p>
+              <p>本日はお越しいただきありがとうございます。</p>
+            </div>
+            <p className="text-[160px] absolute bottom-0 left-0 font-ten leading-[0.9em]">橋本 奈々未</p>
           </div>
         </section>
 
@@ -58,22 +64,28 @@ export default function Home() {
             <div className="w-[500px] absolute right-0 top-0 h-full">
               <SwiperGallery targetData={history02} />
             </div>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 font-ten text-[38px]">
+              <p>xxxx年xx月xx日生まれ</p>
+              <p>本日はお越しいただきありがとうございます。<br />お酒の飲み過ぎに気をつけます。</p>
+            </div>
+            <p className="text-[160px] absolute bottom-0 left-0 font-ten leading-[0.9em]">与田 祐希</p>
           </div>
         </section>
 
         <section className="l-section h-screen w-full bg-green-300">
-          <div className="">
-            <h2>hoge</h2>
+          <div className="flex justify-between">
+            <div className="">
+              <h2>History</h2>
+            </div>
+            <div className="">
+              <h2>History</h2>
+            </div>
           </div>
           
         </section>
 
-        <section className="l-section h-screen w-full bg-blue-300">
-          <h2>hoge</h2>
-          <div className="bg-white w-[500px] mx-auto rounded-md p-4">
-            <p>ERROR</p>
-            <p>text</p>
-          </div>
+        <section className="l-section h-screen w-full bg-black relative">
+          <ErrorModal />
         </section>
 
 
