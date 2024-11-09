@@ -23,15 +23,44 @@ body, html {
   &section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    &Groom {
+      .c-textAnimation {
+        text {
+          fill: #e6b422;
+        }
+      }
+    }
+    &Bride {
+      .c-textAnimation {
+        text {
+          fill: #e3a1a1;
+        }
+      }
+    }
   }
 }
 
 .c- {
   &video {
     &01 {
-      width: 1400px;
-      height: 500px;
+      width: 1700px;
+      height: 800px;
       object-fit: cover;
+    }
+  }
+  &text {
+    &Animation {
+      transform: scale(1.4);
+      width: 100px;
+      height: 100px;
+      margin: 100px auto;
+      font-size: 12px;
+      svg {
+        overflow: visible;
+      }
+      path {
+        fill: none;
+      }
     }
   }
 }
