@@ -1,17 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { useState } from "react";
+import SwiperGallery from "./components/SwiperGallery";
+import SwiperHistory from "./components/SwiperHistory";
 
-// import history01 from "../../public/data/prod/history01.json";
-// import history02 from "../../public/data/prod/history02.json";
+//import groomHistoryImage from "../../public/data/prod/history-groom.json";
+import brideHistoryImage from "../../public/data/prod/history-bride.json";
 import groomProfImage from "../../public/data/prod/profile-groom.json";
 import brideProfImage from "../../public/data/prod/profile-bride.json";
-import SwiperGallery from "./components/SwiperGallery";
-import ErrorModal from "./components/ErrorModal";
+import brideReceptionImage01 from "../../public/data/prod/reception-bride01.json"
+import brideReceptionImage02 from "../../public/data/prod/reception-bride02.json"
 
 export default function Home() {
 
@@ -46,6 +50,24 @@ export default function Home() {
     setAutoPlayBrideSlider(true);
   }
 
+  /* 受付者の紹介：Andクリックで2人目に遷移 */
+  const [currentGroomReception, setCurrentGroomReception] = useState(1);
+  const clickNextGroomReception = () => {
+    setCurrentGroomReception(2);
+  }
+
+  /* 受付者の紹介：Andクリックで2人目に遷移 */
+  const [currentBrideReception, setCurrentBrideReception] = useState(1);
+  const clickNextBrideReception = () => {
+    setCurrentBrideReception(2);
+  }
+
+  /* ラスト：テキストクリックで背景色変化 */
+  const [hideContent, setHideContent] = useState(false);
+  const clickReadyText = () => {
+    setHideContent(true);
+  }
+
   return (
     <div className="">
       <main className="l-main overflow-auto h-screen w-full">
@@ -72,7 +94,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="l-section h-screen w-full bg-red-300 flex items-center">
+        <section className="l-section h-screen w-full bg-black flex items-center">
           <div className=" mx-auto">
             <video className="video c-video01" src="/movie/dummy/movie_dummy03.mp4" autoPlay loop muted></video>
           </div>
@@ -87,7 +109,7 @@ export default function Home() {
         <section className="l-section l-sectionGroom h-screen w-full relative bg-navy01 text-white01">
           <div className="">
             <h2 className="text-[220px] font-bold absolute top-0 left-0 leading-[0.78em] ">GROOM</h2>
-            <div className="w-[500px] absolute right-0 top-0 h-full">
+            <div className="w-[500px] absolute right-28 top-20 h-full">
               <p
                 className="absolute font-bold font-ten text-[50px] top-12 -left-32 rotate-90 cursor-pointer duration-300 hover:text-gold01"
                 onClick={clickGroomSlider}
@@ -99,14 +121,14 @@ export default function Home() {
 
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <p className="text-[80px] tracking-normal font-bold">{process.env.NEXT_PUBLIC_GROOM_NAME_EN}</p>
-              <p className="text-[64px] font-bold font-ten mb-12">{process.env.NEXT_PUBLIC_GROOM_BIRTHDAY}</p>
+              <p className="text-[64px] font-bold font-ten mb-12">{process.env.NEXT_PUBLIC_GROOM_BIRTHDAY} / age:29 / Birthplace: Hyogo</p>
               {displayProfMessageByGroom === 0 && (
                 <p className="text-[38px] font-ten cursor-pointer duration-300 hover:text-gold01" onClick={handleClickProfMessageByGroom}>
                   Click and Display message.<br />
                 </p>
               )}
               {displayProfMessageByGroom === 1 && (
-                <p className="text-[38px] font-ten cursor-pointer duration-300 hover:text-gold01" onClick={handleClickProfMessageByGroom}>
+                <p className="text-[38px] font-ten cursor-pointer duration-300" onClick={handleClickProfMessageByGroom}>
                   メッセージ<br />
                   メッセージ
                 </p>
@@ -146,7 +168,7 @@ export default function Home() {
         <section className="l-section l-sectionBride h-screen w-full relative bg-grayLight01 text-black02">
           <div className="">
             <h2 className="text-[220px] font-bold absolute top-0 left-0 leading-[0.78em]">BRIDE</h2>
-            <div className="w-[500px] absolute right-20 top-20 h-full">
+            <div className="w-[500px] absolute right-28 top-20 h-full">
               <p
                 className="absolute font-bold font-ten text-[50px] top-12 -left-32 rotate-90 cursor-pointer duration-300 hover:text-pink01"
                 onClick={clickBrideSlider}
@@ -158,10 +180,10 @@ export default function Home() {
 
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <p className="text-[80px] tracking-tight font-bold">{process.env.NEXT_PUBLIC_BRIDE_NAME_EN}</p>
-              <p className="text-[60px] font-bold font-ten mb-10">{process.env.NEXT_PUBLIC_BRIDE_BIRTHDAY}</p>
+              <p className="text-[60px] font-bold font-ten mb-10">{process.env.NEXT_PUBLIC_BRIDE_BIRTHDAY} / age:31 / Birthplace: Osaka</p>
               {displayProfMessageByBride === 0 && (
                 <p className="text-[38px] font-ten cursor-pointer leading-loose duration-300 hover:text-pink01" onClick={handleClickProfMessageByBride}>
-                  Click and Display message.<br />
+                  Click and Display message.
                 </p>
               )}
               {displayProfMessageByBride === 1 && (
@@ -201,26 +223,127 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="l-section h-screen w-full bg-green-300">
-          <div className="flex justify-between">
-            <div className="">
-              <h2>History</h2>
+        <section className="l-section l-sectionHistory h-screen w-full bg-black01">
+          <div className="grid grid-flow-row h-screen">
+            <div className="h-1/2">
+              <h2 className="text-grayLight01 text-[60px] font-bold pl-10">History of Juniya</h2>
+              {/* <SwiperHistory targetData={groomHistoryImage}/> */}
+              <SwiperHistory targetData={brideHistoryImage}/>
             </div>
-            <div className="">
-              <h2>History</h2>
+            <div className="h-1/2">
+              <h2 className="text-grayLight01 text-[60px] font-bold text-right pr-10">History of Reina</h2>
+              <SwiperHistory targetData={brideHistoryImage}/>
             </div>
           </div>
           
         </section>
 
-        <section className="l-section h-screen w-full bg-black relative">
-          <ErrorModal />
+        <section className="l-section h-screen w-full bg-navy01 text-white01 relative">
+          <h2 className="text-[130px] font-bold uppercase">Reception</h2>
+          <h3 className="text-[100px] font-bold absolute right-0 bottom-0">Groom side</h3>
+
+          <div className="mb-20 pl-4">
+            <div className="grid mb-10">
+              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none">
+                {currentBrideReception === 1 ? process.env.NEXT_PUBLIC_BRIDE_RECEPTION01 : process.env.NEXT_PUBLIC_BRIDE_RECEPTION02}
+              </h4>
+              <p className="text-[30px] font-ten">
+                {currentBrideReception === 1 ? 
+                <>
+                  受付1人目へのメッセージ<br /><br />
+                  メッセージ<br /><br />
+                  メッセージ<br />
+                  メッセージ
+                </> :
+                <>
+                  受付2人目へのメッセージ<br /><br />
+                  メッセージ<br /><br />
+                  メッセージ<br />
+                  メッセージ
+                </>
+                }
+              </p>
+            </div>
+            <div className="">
+              <ul className="grid grid-flow-col gap-x-1 flex-wrap">
+                {(currentBrideReception === 1 ? brideReceptionImage01 : brideReceptionImage02).map(({ id, image}) => (
+                  <li>
+                    <Image
+                      key={id}
+                      src={image}
+                      width={300}
+                      height={500}
+                      className=""
+                      alt="Reception Image"
+                    />
+                  </li>
+                ))}
+                
+              </ul>
+            </div>
+          </div>
+          {currentBrideReception === 1 && (
+            <p
+              className="text-[60px] font-ten absolute left-4 bottom-4 cursor-pointer duration-300 hover:text-gold01"
+              onClick={clickNextBrideReception}
+            >
+              And...
+            </p>
+          )}
         </section>
 
+        <section className="l-section h-screen w-full bg-grayLight01 text-black02 relative">
+          <h2 className="text-[130px] font-bold uppercase leading-none mb-12">Reception</h2>
+          
+          <h3 className="text-[100px] font-bold absolute right-0 bottom-0">Bride side</h3>
 
-        <section className="l-section h-screen w-full flex items-center justify-center bg-gray-300">
+          <div className="mb-20 pl-4">
+            <div className="grid mb-10">
+              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none">
+                {currentBrideReception === 1 ? process.env.NEXT_PUBLIC_BRIDE_RECEPTION01 : process.env.NEXT_PUBLIC_BRIDE_RECEPTION02}
+              </h4>
+              <p className="text-[30px] font-ten">
+                {currentBrideReception === 1 ? 
+                <>
+                  text1
+                </> :
+                <>
+                  text2
+                </>
+                }
+              </p>
+            </div>
+            <div className="">
+              <ul className="grid grid-flow-col gap-x-1 flex-wrap">
+                {(currentBrideReception === 1 ? brideReceptionImage01 : brideReceptionImage02).map(({ id, image}) => (
+                  <li>
+                    <Image
+                      key={id}
+                      src={image}
+                      width={300}
+                      height={500}
+                      className=""
+                      alt="Reception Image"
+                    />
+                  </li>
+                ))}
+                
+              </ul>
+            </div>
+          </div>
+          {currentBrideReception === 1 && (
+            <p
+              className="text-[60px] font-ten absolute left-4 bottom-4 cursor-pointer duration-300 hover:text-pink01"
+              onClick={clickNextBrideReception}
+            >
+              And...
+            </p>
+          )}
+        </section>
+
+        <section className={`l-section h-screen w-full flex items-center justify-center ${hideContent ? 'bg-black' : 'bg-gray-300' }`}>
           <div className="">
-            <h2 className="text-[200px] font-ten">Are you ready?</h2>
+            <h2 className="text-[200px] font-ten cursor-pointer duration-300 hover:text-pink01" onClick={clickReadyText}>Are you ready?</h2>
           </div>
         </section>
       </main>
