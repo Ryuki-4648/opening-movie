@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 import "swiper/css";
@@ -14,6 +14,7 @@ import SwiperHistory from "./components/SwiperHistory";
 import brideHistoryImage from "../../public/data/prod/history-bride.json";
 import groomProfImage from "../../public/data/prod/profile-groom.json";
 import brideProfImage from "../../public/data/prod/profile-bride.json";
+import groomReceptionImage from "../../public/data/prod/reception-groom.json";
 import brideReceptionImage01 from "../../public/data/prod/reception-bride01.json"
 import brideReceptionImage02 from "../../public/data/prod/reception-bride02.json"
 
@@ -51,12 +52,6 @@ export default function Home() {
   }
 
   /* 受付者の紹介：Andクリックで2人目に遷移 */
-  const [currentGroomReception, setCurrentGroomReception] = useState(1);
-  const clickNextGroomReception = () => {
-    setCurrentGroomReception(2);
-  }
-
-  /* 受付者の紹介：Andクリックで2人目に遷移 */
   const [currentBrideReception, setCurrentBrideReception] = useState(1);
   const clickNextBrideReception = () => {
     setCurrentBrideReception(2);
@@ -77,7 +72,7 @@ export default function Home() {
             className={`text-[220px] cursor-pointer font-ten ${displayIntroMessage ? 'text-white': 'text-black'}`}
             onClick={handleClickIntro}
           >
-            Welcome to<br />Our Wedding<br />Party
+            Welcome to<br />Our Wedding<br />Reception
           </h1>
         </section>
 
@@ -121,7 +116,7 @@ export default function Home() {
 
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <p className="text-[80px] tracking-normal font-bold">{process.env.NEXT_PUBLIC_GROOM_NAME_EN}</p>
-              <p className="text-[64px] font-bold font-ten mb-12">{process.env.NEXT_PUBLIC_GROOM_BIRTHDAY} / age:29 / Birthplace: Hyogo</p>
+              <p className="text-[64px] font-bold font-ten mb-12">{process.env.NEXT_PUBLIC_GROOM_BIRTHDAY} / age:29 / birthplace: Hyogo</p>
               {displayProfMessageByGroom === 0 && (
                 <p className="text-[38px] font-ten cursor-pointer duration-300 hover:text-gold01" onClick={handleClickProfMessageByGroom}>
                   Click and Display message.<br />
@@ -129,14 +124,14 @@ export default function Home() {
               )}
               {displayProfMessageByGroom === 1 && (
                 <p className="text-[38px] font-ten cursor-pointer duration-300" onClick={handleClickProfMessageByGroom}>
-                  メッセージ<br />
-                  メッセージ
+                  本日はお越しいただきありがとうございます。<br />
+                  皆さまと大切な一日を過ごせることを嬉しく思います。
                 </p>
               )}
               {displayProfMessageByGroom === 2 && (
                 <p className="text-[38px] font-ten">
-                  メッセージ<br />
-                  メッセージ
+                  たくさん盛り上がってもらえたら嬉しいです！<br />
+                  野次・ガヤもどんどんください！笑
                 </p>
               )}
             </div>
@@ -180,7 +175,7 @@ export default function Home() {
 
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <p className="text-[80px] tracking-tight font-bold">{process.env.NEXT_PUBLIC_BRIDE_NAME_EN}</p>
-              <p className="text-[60px] font-bold font-ten mb-10">{process.env.NEXT_PUBLIC_BRIDE_BIRTHDAY} / age:31 / Birthplace: Osaka</p>
+              <p className="text-[60px] font-bold font-ten mb-10">{process.env.NEXT_PUBLIC_BRIDE_BIRTHDAY} / age:31 / birthplace: Osaka</p>
               {displayProfMessageByBride === 0 && (
                 <p className="text-[38px] font-ten cursor-pointer leading-loose duration-300 hover:text-pink01" onClick={handleClickProfMessageByBride}>
                   Click and Display message.
@@ -239,37 +234,27 @@ export default function Home() {
         </section>
 
         <section className="l-section h-screen w-full bg-navy01 text-white01 relative">
-          <h2 className="text-[130px] font-bold uppercase">Reception</h2>
-          <h3 className="text-[100px] font-bold absolute right-0 bottom-0">Groom side</h3>
-
-          <div className="mb-20 pl-4">
-            <div className="grid mb-10">
-              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none">
-                {currentBrideReception === 1 ? process.env.NEXT_PUBLIC_BRIDE_RECEPTION01 : process.env.NEXT_PUBLIC_BRIDE_RECEPTION02}
+          <h2 className="text-[150px] font-bold uppercase leading-[0.75em] mb-20">Reception</h2>
+          <h3 className="text-[100px] font-bold absolute right-0 -bottom-10 text-gold01">Groom side</h3>
+          <p className="rotate-90 absolute -right-32 top-48 text-[30px] font-ten tracking-wider pb-1 border-b-2 border-white01">
+            Thanks, my dear friends.<span className="text-navy01">...</span>
+          </p>
+          <div className="mb-20 px-4">
+            <div className="grid mb-8">
+              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none tracking-wider">
+                {process.env.NEXT_PUBLIC_GROOM_RECEPTION01} <span className="italic ml-4 mr-6">and</span> {process.env.NEXT_PUBLIC_GROOM_RECEPTION02}
               </h4>
-              <p className="text-[30px] font-ten">
-                {currentBrideReception === 1 ? 
-                <>
-                  受付1人目へのメッセージ<br /><br />
-                  メッセージ<br /><br />
-                  メッセージ<br />
-                  メッセージ
-                </> :
-                <>
-                  受付2人目へのメッセージ<br /><br />
-                  メッセージ<br /><br />
-                  メッセージ<br />
-                  メッセージ
-                </>
-                }
+              <p className="w-28 h-0.5 mb-8 bg-white01"></p>
+              <p className="text-[36px] font-ten">
+                今日は受付してくれてありがとう！<br /><br />
+                
               </p>
             </div>
             <div className="">
-              <ul className="grid grid-flow-col gap-x-1 flex-wrap">
-                {(currentBrideReception === 1 ? brideReceptionImage01 : brideReceptionImage02).map(({ id, image}) => (
-                  <li>
+              <ul className="grid grid-flow-col gap-x-2">
+                {groomReceptionImage.map(({ id, image}) => (
+                  <li key={id}>
                     <Image
-                      key={id}
                       src={image}
                       width={300}
                       height={500}
@@ -278,37 +263,33 @@ export default function Home() {
                     />
                   </li>
                 ))}
-                
               </ul>
             </div>
           </div>
-          {currentBrideReception === 1 && (
-            <p
-              className="text-[60px] font-ten absolute left-4 bottom-4 cursor-pointer duration-300 hover:text-gold01"
-              onClick={clickNextBrideReception}
-            >
-              And...
-            </p>
-          )}
         </section>
 
         <section className="l-section h-screen w-full bg-grayLight01 text-black02 relative">
-          <h2 className="text-[130px] font-bold uppercase leading-none mb-12">Reception</h2>
+          <h2 className="text-[150px] font-bold uppercase leading-[0.75em] mb-20">Reception</h2>
           
-          <h3 className="text-[100px] font-bold absolute right-0 bottom-0">Bride side</h3>
-
-          <div className="mb-20 pl-4">
-            <div className="grid mb-10">
-              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none">
+          <h3 className="text-[100px] font-bold absolute right-0 -bottom-10 text-pink01">Bride side</h3>
+          <p className="rotate-90 absolute -right-32 top-48 text-[30px] font-ten tracking-wider pb-1 border-b-2 border-black02">
+            Thanks, my dear friends.<span className="text-grayLight01">...</span>
+          </p>
+          <div className="mb-20 px-4">
+            <div className="grid mb-8">
+              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none tracking-wider">
                 {currentBrideReception === 1 ? process.env.NEXT_PUBLIC_BRIDE_RECEPTION01 : process.env.NEXT_PUBLIC_BRIDE_RECEPTION02}
               </h4>
-              <p className="text-[30px] font-ten">
+              <p className="w-28 h-0.5 mb-8 bg-black01"></p>
+              <p className="text-[36px] font-ten">
                 {currentBrideReception === 1 ? 
                 <>
-                  text1
+                  今日は受付してくれてありがとう！<br /><br />
+                  
                 </> :
                 <>
-                  text2
+                  今日は受付ありがとう！<br /><br />
+                  
                 </>
                 }
               </p>
@@ -316,9 +297,8 @@ export default function Home() {
             <div className="">
               <ul className="grid grid-flow-col gap-x-1 flex-wrap">
                 {(currentBrideReception === 1 ? brideReceptionImage01 : brideReceptionImage02).map(({ id, image}) => (
-                  <li>
+                  <li key={id}>
                     <Image
-                      key={id}
                       src={image}
                       width={300}
                       height={500}

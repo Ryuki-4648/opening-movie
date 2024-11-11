@@ -20,10 +20,10 @@ export default function SwiperHistory({ targetData }: SwiperHistoryProps) {
       slidesPerView="auto"
       spaceBetween={20}
       loop={true}
-      speed={1200}
+      speed={2000}
+      preventInteractionOnTransition={true}
       autoplay={{
         delay: 0,
-        disableOnInteraction: false,
       }}
       freeMode={{
         enabled: true,

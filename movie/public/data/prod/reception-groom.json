@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "image": "/img/prod/groom/reception/img01.jpg"
+  },
+  {
+    "id": 2,
+    "image": "/img/prod/groom/reception/img02.jpg"
+  },
+  {
+    "id": 3,
+    "image": "/img/prod/groom/reception/img03.jpg"
+  },
+  {
+    "id": 4,
+    "image": "/img/prod/groom/reception/img04.jpg"
+  },
+  {
+    "id": 5,
+    "image": "/img/prod/groom/reception/img05.jpg"
+  },
+  {
+    "id": 6,
+    "image": "/img/prod/groom/reception/img06.jpg"
+  },
+  {
+    "id": 7,
+    "image": "/img/prod/groom/reception/img07.jpg"
+  },
+  {
+    "id": 8,
+    "image": "/img/prod/groom/reception/img08.jpg"
+  }
+]

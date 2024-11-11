@@ -40,6 +40,7 @@ body, html {
     &History {
       .swiper-wrapper {
         width: 300px;
+        transition-timing-function: linear;
       }
     }
   }
