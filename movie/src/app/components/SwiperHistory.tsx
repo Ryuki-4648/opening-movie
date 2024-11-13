@@ -10,9 +10,10 @@ import { TargetData } from "../types/targetData";
 
 interface SwiperHistoryProps {
   targetData: TargetData[];
+  reverse: boolean;
 }
 
-export default function SwiperHistory({ targetData }: SwiperHistoryProps) {
+export default function SwiperHistory({ targetData, reverse }: SwiperHistoryProps) {
   return (
     <Swiper
       className="flex justify-end"
@@ -24,6 +25,7 @@ export default function SwiperHistory({ targetData }: SwiperHistoryProps) {
       preventInteractionOnTransition={true}
       autoplay={{
         delay: 0,
+        reverseDirection: reverse ? true : false,
       }}
       freeMode={{
         enabled: true,

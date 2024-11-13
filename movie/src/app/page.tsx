@@ -220,14 +220,14 @@ export default function Home() {
 
         <section className="l-section l-sectionHistory h-screen w-full bg-black01">
           <div className="grid grid-flow-row h-screen">
-            <div className="h-1/2">
-              <h2 className="text-grayLight01 text-[60px] font-bold pl-10">History of Juniya</h2>
-              {/* <SwiperHistory targetData={groomHistoryImage}/> */}
-              <SwiperHistory targetData={brideHistoryImage}/>
+            <div className="h-[50vh]">
+              <h2 className="text-grayLight01 text-[80px] font-bold">History of Juniya</h2>
+              {/* <SwiperHistory targetData={groomHistoryImage} reverse={true}/> */}
+              <SwiperHistory targetData={brideHistoryImage} reverse={true}/>
             </div>
-            <div className="h-1/2">
-              <h2 className="text-grayLight01 text-[60px] font-bold text-right pr-10">History of Reina</h2>
-              <SwiperHistory targetData={brideHistoryImage}/>
+            <div className="h-[50vh]">
+              <SwiperHistory targetData={brideHistoryImage} reverse={false}/>
+              <h2 className="text-grayLight01 text-[80px] font-bold text-right">History of Reina</h2>
             </div>
           </div>
           
@@ -241,13 +241,11 @@ export default function Home() {
           </p>
           <div className="mb-20 px-4">
             <div className="grid mb-8">
-              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none tracking-wider">
+              <h4 className="text-[70px] font-ten font-bold mb-10 leading-none tracking-wider">
                 {process.env.NEXT_PUBLIC_GROOM_RECEPTION01} <span className="italic ml-4 mr-6">and</span> {process.env.NEXT_PUBLIC_GROOM_RECEPTION02}
               </h4>
               <p className="w-28 h-0.5 mb-8 bg-white01"></p>
               <p className="text-[36px] font-ten">
-                今日は受付してくれてありがとう！<br /><br />
-                
               </p>
             </div>
             <div className="">
@@ -277,19 +275,15 @@ export default function Home() {
           </p>
           <div className="mb-20 px-4">
             <div className="grid mb-8">
-              <h4 className="text-[60px] font-ten font-bold mb-10 leading-none tracking-wider">
+              <h4 className="text-[70px] font-ten font-bold mb-10 leading-none tracking-wider">
                 {currentBrideReception === 1 ? process.env.NEXT_PUBLIC_BRIDE_RECEPTION01 : process.env.NEXT_PUBLIC_BRIDE_RECEPTION02}
               </h4>
               <p className="w-28 h-0.5 mb-8 bg-black01"></p>
               <p className="text-[36px] font-ten">
                 {currentBrideReception === 1 ? 
                 <>
-                  今日は受付してくれてありがとう！<br /><br />
-                  
                 </> :
                 <>
-                  今日は受付ありがとう！<br /><br />
-                  
                 </>
                 }
               </p>
@@ -313,7 +307,7 @@ export default function Home() {
           </div>
           {currentBrideReception === 1 && (
             <p
-              className="text-[60px] font-ten absolute left-4 bottom-4 cursor-pointer duration-300 hover:text-pink01"
+              className="text-[60px] font-ten absolute left-4 -bottom-4 cursor-pointer duration-300 hover:text-pink01"
               onClick={clickNextBrideReception}
             >
               And...
