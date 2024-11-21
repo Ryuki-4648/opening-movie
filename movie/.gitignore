@@ -38,4 +38,5 @@ next-env.d.ts
 # prod data
 # /public/data/prod/*.json
 /public/img/prod/
+/public/movie/prod/
 .env

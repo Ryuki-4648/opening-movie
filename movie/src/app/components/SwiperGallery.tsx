@@ -11,9 +11,10 @@ import { TargetData } from "../types/targetData";
 interface SwiperGalleryProps {
   targetData: TargetData[];
   autoplayflg: boolean;
+  sliderSpeed: number;
 }
 
-export default function SwiperGallery({ targetData, autoplayflg }: SwiperGalleryProps) {
+export default function SwiperGallery({ targetData, autoplayflg, sliderSpeed }: SwiperGalleryProps) {
   return (
     <Swiper
       key={autoplayflg ? 'autoplay-enabled' : 'autoplay-disabled'}
@@ -21,7 +22,7 @@ export default function SwiperGallery({ targetData, autoplayflg }: SwiperGallery
       modules={[Autoplay, EffectFade]}
       slidesPerView={1}
       loop={true}
-      speed={300}
+      speed={sliderSpeed}
       autoplay={autoplayflg ? {
         delay: 1200,
         disableOnInteraction: false,
