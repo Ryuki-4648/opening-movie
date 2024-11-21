@@ -10,7 +10,8 @@ import "swiper/css/pagination";
 import SwiperGallery from "./components/SwiperGallery";
 import SwiperHistory from "./components/SwiperHistory";
 
-//import groomHistoryImage from "../../public/data/prod/history-groom.json";
+import groomHistoryImage from "../../public/data/prod/history-groom.json";
+import CustomCursor from "./components/CustomCursor";
 import brideHistoryImage from "../../public/data/prod/history-bride.json";
 import groomProfImage from "../../public/data/prod/profile-groom.json";
 import brideProfImage from "../../public/data/prod/profile-bride.json";
@@ -67,6 +68,8 @@ export default function Home() {
     <div className="">
       <main className="l-main overflow-auto h-screen w-full">
 
+        <CustomCursor />
+
         <section className="l-section h-screen w-full bg-black flex items-center">
           <h1
             className={`text-[220px] cursor-pointer font-ten ${displayIntroMessage ? 'text-white': 'text-black'}`}
@@ -76,30 +79,11 @@ export default function Home() {
           </h1>
         </section>
 
-        <section className="l-section h-screen w-full bg-gray-300 flex items-center">
+        <section className="l-section h-screen w-full bg-black flex items-center relative">
           <div className=" mx-auto">
-            <h2></h2>
-            <video className="video c-video01" src="/movie/dummy/movie_dummy01.mp4" autoPlay loop muted></video>
+            <video className="video c-video01" src="/movie/prod/movie_prod01.mp4" autoPlay muted></video>
           </div>
         </section>
-
-        <section className="l-section h-screen w-full bg-gray-300 flex items-center">
-          <div className=" mx-auto">
-            <video className="video c-video01" src="/movie/dummy/movie_dummy02.mov" autoPlay loop muted></video>
-          </div>
-        </section>
-
-        <section className="l-section h-screen w-full bg-black flex items-center">
-          <div className=" mx-auto">
-            <video className="video c-video01" src="/movie/dummy/movie_dummy03.mp4" autoPlay loop muted></video>
-          </div>
-        </section>
-
-        {/* <section className="l-section h-screen w-full bg-red-300 flex items-center">
-          <div className=" mx-auto">
-            <video className="video c-video01" src="/movie/dummy/movie_dummy01.mp4" autoPlay loop muted></video>
-          </div>
-        </section> */}
 
         <section className="l-section l-sectionGroom h-screen w-full relative bg-navy01 text-white01">
           <div className="">
@@ -111,7 +95,7 @@ export default function Home() {
               >
                 Gallery
               </p>
-              <SwiperGallery targetData={groomProfImage} autoplayflg={autoPlayGroomSlider} />
+              <SwiperGallery targetData={groomProfImage} autoplayflg={autoPlayGroomSlider} sliderSpeed={400} />
             </div>
 
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
@@ -170,7 +154,7 @@ export default function Home() {
               >
                 Gallery
               </p>
-              <SwiperGallery targetData={brideProfImage} autoplayflg={autoPlayBrideSlider} />
+              <SwiperGallery targetData={brideProfImage} autoplayflg={autoPlayBrideSlider} sliderSpeed={600} />
             </div>
 
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
@@ -222,8 +206,7 @@ export default function Home() {
           <div className="grid grid-flow-row h-screen">
             <div className="h-[50vh]">
               <h2 className="text-grayLight01 text-[80px] font-bold">History of Juniya</h2>
-              {/* <SwiperHistory targetData={groomHistoryImage} reverse={true}/> */}
-              <SwiperHistory targetData={brideHistoryImage} reverse={true}/>
+              <SwiperHistory targetData={groomHistoryImage} reverse={true}/>
             </div>
             <div className="h-[50vh]">
               <SwiperHistory targetData={brideHistoryImage} reverse={false}/>
@@ -246,6 +229,7 @@ export default function Home() {
               </h4>
               <p className="w-28 h-0.5 mb-8 bg-white01"></p>
               <p className="text-[36px] font-ten">
+
               </p>
             </div>
             <div className="">
@@ -282,8 +266,10 @@ export default function Home() {
               <p className="text-[36px] font-ten">
                 {currentBrideReception === 1 ? 
                 <>
+
                 </> :
                 <>
+
                 </>
                 }
               </p>
