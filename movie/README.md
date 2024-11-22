@@ -2,6 +2,16 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+<!-- 
+
+　.∧_∧
+( ´ ･ω･)
+(__つ/￣￣￣/ npm run dev..
+　＼/　　　/
+　　￣￣￣
+
+-->
+
 First, run the development server:
 
 ```bash
