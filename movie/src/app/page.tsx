@@ -102,7 +102,7 @@ export default function Home() {
               <p className="text-[80px] tracking-normal font-bold">{process.env.NEXT_PUBLIC_GROOM_NAME_EN}</p>
               <p className="text-[64px] font-bold font-ten mb-12">{process.env.NEXT_PUBLIC_GROOM_BIRTHDAY} / age:29 / birthplace: Hyogo</p>
               {displayProfMessageByGroom === 0 && (
-                <p className="text-[38px] font-ten cursor-pointer duration-300 hover:text-gold01" onClick={handleClickProfMessageByGroom}>
+                <p className="text-[38px] font-ten cursor-pointer h-[114px] duration-300 hover:text-gold01" onClick={handleClickProfMessageByGroom}>
                   Click and Display message.<br />
                 </p>
               )}
@@ -154,14 +154,14 @@ export default function Home() {
               >
                 Gallery
               </p>
-              <SwiperGallery targetData={brideProfImage} autoplayflg={autoPlayBrideSlider} sliderSpeed={600} />
+              <SwiperGallery targetData={brideProfImage} autoplayflg={autoPlayBrideSlider} sliderSpeed={500} />
             </div>
 
             <div className="absolute left-4 top-1/2 -translate-y-1/2">
               <p className="text-[80px] tracking-tight font-bold">{process.env.NEXT_PUBLIC_BRIDE_NAME_EN}</p>
               <p className="text-[60px] font-bold font-ten mb-10">{process.env.NEXT_PUBLIC_BRIDE_BIRTHDAY} / age:31 / birthplace: Osaka</p>
               {displayProfMessageByBride === 0 && (
-                <p className="text-[38px] font-ten cursor-pointer leading-loose duration-300 hover:text-pink01" onClick={handleClickProfMessageByBride}>
+                <p className="text-[38px] font-ten cursor-pointer leading-loose h-[114px] duration-300 hover:text-pink01" onClick={handleClickProfMessageByBride}>
                   Click and Display message.
                 </p>
               )}

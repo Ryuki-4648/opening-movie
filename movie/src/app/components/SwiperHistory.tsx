@@ -21,7 +21,7 @@ export default function SwiperHistory({ targetData, reverse }: SwiperHistoryProp
       slidesPerView="auto"
       spaceBetween={20}
       loop={true}
-      speed={2000}
+      speed={1500}
       preventInteractionOnTransition={true}
       autoplay={{
         delay: 0,
